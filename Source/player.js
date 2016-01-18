@@ -30,7 +30,7 @@ var Player = function () {
         var pls = "rpiList.pls";
         //loadPlaylist(pls);
         player.setFile(pls);
-        player.play();
+        //TODO Win player.play();
         //TODO Win player.setVolume(100);
         titleMaxSize = 11;
         //TODO Win readPlayerStatus();
@@ -198,6 +198,17 @@ function displayPlayerStatus() {
 
 function processMessage(command) {
     console.log((new Date().toFormattedString()).grey + (' ' + command.name.padRight(30) + " " + common.displayMessage(command.intId.slice()).padRight(60) + " " + command.hexId.hexToAscii()).yellow);
+    
+    //68 xx C0 21 40 00 09 xxxxx 05 43 44 - .CD
+    if (command.hexId[0] === '68' && 
+        command.hexId[2].toUpperCase() === 'C0' && 
+        command.hexId[2].toUpperCase() === '21' && 
+        command.hexId[2].toUpperCase() === '40' && 
+        command.hexId[2].toUpperCase() === '00' && 
+        command.hexId[2].toUpperCase() === '09' && 
+        command.hexId[command.hexId.length - 4] === '05' && command.hexId[command.hexId.length - 3].toUpperCase() === '43' && command.hexId[command.hexId.length - 3] === '44') {
+            //TODO replace CD label with MP3
+    }
     if (command.name === 'radio_cd_poll') { //'68 03 18 01 72'
         console.log('//respond as CD player'.cyan);
         announceCDneeded = false;
@@ -258,28 +269,6 @@ function processMessage(command) {
         }
     }
 }
-/* ={
-	player: mplayer,
-	titleMaxSize: titleMaxSize,
-
-	announceCD: function(){
-		announceCD();
-	},
-	loadPlaylist: function(filename){
-		console.log('TODO parse for search');
-	},
-	sendPlayerStatus: function(){
-		sendPlayerStatus();
-	},
-	next: function(){
-		mplayer.next();
-	},
-	previous: function(){
-		mplayer.previous();
-	}
-}
-*/
-
 
 module.exports = Player;
 

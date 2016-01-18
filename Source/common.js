@@ -1,6 +1,6 @@
 Common = {
   colors: require('colors'),
-  //serial: require('serialport'),
+  //TODO Win serial: require('serialport'),
   fs:   require('fs'),
   path: require('path'),
   serialport: init(),
@@ -19,6 +19,7 @@ Common = {
   }
 };
 function init(){
+//TODO Win 
 	//var SerialPortBase = require("serialport").SerialPort;
 	//var serialport = new SerialPortBase("/dev/ttyUSB0",{
  //           baudRate:9600, 

@@ -11,7 +11,8 @@ function Mplayer(path){
     this.file = "";
     this.rl = null;
 
-    if(typeof path !== 'undefined')
+    //TODO Win 
+    /* if(typeof path !== 'undefined')
         this.setFile(path);
 
     events.EventEmitter.call(this);
@@ -19,7 +20,7 @@ function Mplayer(path){
     cp.exec('mplayer', function(err, stdout, stdin){
         if(err)
             throw new Error("Mplayer encountered an error or isn't installed.");
-    });
+    }); */
 };
 
 Mplayer.prototype.__proto__ = events.EventEmitter.prototype;
@@ -53,8 +54,6 @@ Mplayer.prototype.play = function(opts) {
             input: this.childProc.stdout,
             output: this.childProc.stdin
         });
-
-        //console.log(this.childProc.stdin);
     }
 };
 

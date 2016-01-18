@@ -1,0 +1,46 @@
+bps: 9600
+data bits :8
+parity: none
+stop bits: 1
+Row control: none
+
+use FIFO buffers - 16550 compatible UART
+receive buffer: 16
+transmit buffer: 16
+
+http://www.alextronic.de/bmw/projects_bmw_info_ibus.html
+Visualisierung von Nachrichten in der Instrumentenkombination
+
+Die Textzeile der Instrumentenkombination kann über den I-Bus beschrieben werden. Eventuell bereits angezeigte Nachrichten, vom Bordcomputer zum Beispiel, werden dabei ausgeblendet. Die Anzeige erfolgt nach Übertragung der Nachricht für ca. 10s. Nach dieser Zeit wechselt die Anzeige wieder zu dem vorher angezeigten Text oder schaltet sich aus wenn dies der vorherige Zustand der Anzeige war.
+
+ 
+
+bmw_ike.jpg
+
+Abbildung 1.8: Das Bild zeigt die Instrumentenkombination. Es wird der Name des aktuell abgespielten Interpreten in der Textzeile angezeigt.
+
+ 
+
+Beschreiben der Textzeile in der Instrumentenkombination:    ADRESSE 80 HEX
+
+Format der Nachricht:
+
+<68 17 80> 23 62 30  <Option>  <Text in ASCII Hex> <XOR>
+
+Hinweis: Es müssen immer alle Zeichen die in der Textzeile darstellbar sindgesendet werden da ansonsten die "alten" Zeichen nicht überschrieben werden. Somit ist die Nachrichtenlänge immer "17H".
+
+Die Nachricht  kann mit folgenden Optionen angezeigt werden:
+
+35 00     normale Anzeige
+
+37 01     Text zwischen zwei roten Feilen anzeigen
+
+37 03     Texte zwischen zwei roten, blinkenden Feilen anzeigen
+
+37 04     Gong und Text zwischen zwei roten, blinkenden Feilen anzeigen
+
+37 05     Gong und Text anzeigen
+
+37 08     Gong  I  (ohne Anzeige einer Nachricht)
+
+37 10     Gong  II  (ohne Anzeige einer Nachricht)

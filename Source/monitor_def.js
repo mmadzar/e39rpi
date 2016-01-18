@@ -381,6 +381,5 @@ function convertToInt(hex) {
       for (var i = 0; i < hex.length; i++) {
             result.push(parseInt(hex[i], 16));
       };
-      return result
-      ;
+      return result;
 }
