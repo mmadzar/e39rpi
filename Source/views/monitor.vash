@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+@html.extend('layout', function(model){
+
+    @html.block('content', function(model){
+            
+        <h2>@model.channel</h2>
+        <a href="start" >Start Monitor</a>
+        <div></div>
+        <a href="send?txtMsg=3F_05_00_0C_00_11" >Send Message</a>
+
+        <table class="table table-bordered">
+            @model.buffer.forEach(function(msg){
+                <tr>
+                    <td>
+                        @msg.nick
+                    </td>
+                    <td>
+                        <small class="timestamp">@msg.date</small>
+                        @msg.args[1]                        
+                    </td>
+                </tr>
+            })
+        </table>
+
+    })
+
+})

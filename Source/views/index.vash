@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+@html.extend('layout', function(model){
+    @html.block('content', function(model){
+        <div>
+            <a href="sendCommandByName?name=test">test</a>
+        </div>
+         <div>
+            <a href="sendCommandByName?name=obc_7.2_L_100">obc_7.2_L_100</a>
+        </div>
+       <div>
+            <a href="sendCommandByName?name=test_radio">test_radio</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=test_radio2">test_radio 2</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=test_ike">test_ike</a>
+        </div>
+        <h2>Lights</h2>
+        <div>
+            <a href="sendCommandByName?name=warning_lights_flash_on_off_repeatedly">warning_lights_flash_on_off_repeatedly</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=lowbeams_flash_on_off_repeatedly">lowbeams_flash_on_off_repeatedly</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=highbeams_flash_on_off_repeatedly">highbeams_flash_on_off_repeatedly</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=exterior_lights_all_off">exterior_lights_all_off</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=cycle_through_exterior_lighting_patterns_(high_low_fogs)">cycle_through_exterior_lighting_patterns__(high_low_fogs)</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=lightswitch_on">steeringwheel_controls_light_on</a>
+            |
+            <a href="sendCommandByName?name=lightswitch_off">steeringwheel_controls_light_off</a>
+        </div>       
+        <div>
+            <a href="sendCommandByName?name=interior_lights_on_for_3_seconds">interior_lights_on_for_3_seconds</a>
+        </div>
+         <h2>Windows</h2>
+        <div>
+            <a href="sendCommandByName?name=sunroof_open">sunroof_open</a>
+            |
+            <a href="sendCommandByName?name=sunroof_close">sunroof_close</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=all_windows_open">all_windows_open</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=driver_front_window_close">driver_front_window_close</a>
+            |
+            <a href="sendCommandByName?name=passenger_front_window_close">passenger_front_window_close</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=driver_rear_window_open">driver_rear_window_open</a>
+            |
+            <a href="sendCommandByName?name=driver_rear_window_close">driver_rear_window_close</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=passenger_rear_window_open">passenger_rear_window_open</a>
+            |
+            <a href="sendCommandByName?name=passenger_rear_window_close">passenger_rear_window_close</a>
+        </div>
+        <h2>Locks</h2>
+        <div>
+            <a href="sendCommandByName?name=trunk_open">trunk_open</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=rear_doors_locks_on">rear_doors_locks_on</a>
+            |
+            <a href="sendCommandByName?name=rear_doors_locks_off">rear_doors_locks_off</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=all_doors_toggle_lock_unlock">all_doors_toggle_lock_unlock</a>
+        </div>        
+        <h2>Wipers</h2>
+        <div>
+            <a href="sendCommandByName?name=washer_only">washer_only</a>
+        </div>
+        <div>            
+            <a href="sendCommandByName?name=washer_and_swipe">washer_and_swipe</a>
+        </div>
+        <div>
+            <a href="sendCommandByName?name=wiper_single">wiper_single</a>
+            |
+            <a href="sendCommandByName?name=wiper_double">wiper_double</a>
+        </div>
+        <table class="table table-bordered">
+            @model.buffer.forEach(function(msg){
+                <tr>
+                    <td>
+                        <a href="sendCommandByName?name=@msg.name">@msg.name</a>
+                    </td>
+                    <td>
+                        @msg.description
+                    </td>
+                </tr>
+            })
+        </table>
+    })
+})
