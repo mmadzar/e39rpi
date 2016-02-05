@@ -35,7 +35,7 @@ app.use(logger('dev'));
 app.use(methodOverride());
 app.use(session({ resave: true,
                   saveUninitialized: true,
-                  secret: 'blarg1 blarg1' }));
+                  secret: 'some secret key 123' }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(multer());

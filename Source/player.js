@@ -202,12 +202,15 @@ function processMessage(command) {
     //68 xx C0 21 40 00 09 xxxxx 05 43 44 - .CD
     if (command.hexId[0] === '68' && 
         command.hexId[2].toUpperCase() === 'C0' && 
-        command.hexId[2].toUpperCase() === '21' && 
-        command.hexId[2].toUpperCase() === '40' && 
-        command.hexId[2].toUpperCase() === '00' && 
-        command.hexId[2].toUpperCase() === '09' && 
-        command.hexId[command.hexId.length - 4] === '05' && command.hexId[command.hexId.length - 3].toUpperCase() === '43' && command.hexId[command.hexId.length - 3] === '44') {
+        command.hexId[3] === '21' && 
+        command.hexId[4] === '40' && 
+        command.hexId[5] === '00' && 
+        command.hexId[6] === '09' && 
+        command.hexId[command.hexId.length - 4] === '05' && 
+        command.hexId[command.hexId.length - 3] === '43' && 
+        command.hexId[command.hexId.length - 3] === '44') {
             //TODO replace CD label with MP3
+        ibus.sendMessage(monitor_def.findCommandByName("mp3_menu3").hexId.slice());
     }
     if (command.name === 'radio_cd_poll') { //'68 03 18 01 72'
         console.log('//respond as CD player'.cyan);
